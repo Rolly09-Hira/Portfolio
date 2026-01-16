@@ -1,0 +1,53 @@
+{
+  "hero": {
+    "greeting": "Hello! I'M",
+    "name": "ANDRIAMAHERIMANANA",
+    "lastName": "Johnson Rolly",
+    "title": "I'M A",
+    "subtitle": "FULL-STACK & MOBILE DEVELOPER",
+    "skills": "Skills in",
+    "description": "Passionate developer creating innovative solutions with expertise in full-stack, mobile development and ongoing specialization in Artificial Intelligence. Always seeking technical challenges and optimal performance.",
+    "location": "Antananarivo, Madagascar",
+    "available": "Available for opportunities"
+  },
+  "navbar": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  
+  "about": {
+    "title": "About",
+    "contactTitle": "Contact",
+    "diplomasTitle": "Diplomas",
+    "languagesTitle": "Languages",
+    "experienceTitle": "Experience & Training",
+    "skillsTitle": "Skills",
+    "interestsTitle": "Interests"
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "languagesTitle": "Programming Languages",
+    "frameworksTitle": "Frameworks & Libraries",
+    "databasesTitle": "Databases",
+    "toolsTitle": "Tools & Technologies"
+  },
+    "projects": {
+    "title": "Projects"
+  },
+   "footer": {
+    "contactTitle": "Contact",
+    "connectTitle": "Let's Connect",
+    "navigationTitle": "Navigation",
+    "navHome": "Home",
+    "navProjects": "Projects",
+    "navSkills": "Skills",
+    "navAbout": "About",
+    "copyright": "All rights reserved.",
+    "availableMessage": "Currently available for professional opportunities",
+    "backToTop": "↑ Back to top",
+    "lastUpdate": "Last update"
+  }
+
+}

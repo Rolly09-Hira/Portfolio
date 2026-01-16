@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "greeting": "Bonjour, Je suis",
+    "name": "ANDRIAMAHERIMANANA",
+    "lastName": "Johnson Rolly",
+    "subtitle": "DEVELOPPEUR FULL-STACK & MOBILE",
+    "skills": "Compétences en",
+    "description": "Développeur passionné créant des solutions innovantes avec une expertise en développement full-stack, mobile et une spécialisation en cours en Intelligence Artificielle. Toujours à la recherche de défis techniques et de performances optimales.",
+    "location": "Antananarivo, Madagascar",
+    "available": "Disponible pour opportunités"
+  },
+  "navbar": {
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+   "about": {
+    "title": "À propos",
+    "contactTitle": "Contact",
+    "diplomasTitle": "Diplômes",
+    "languagesTitle": "Langues",
+    "experienceTitle": "Expériences & Formation",
+    "skillsTitle": "Aptitudes",
+    "interestsTitle": "Centres d'intérêt"
+  },
+  "skills": {
+    "title": "Compétences Techniques",
+    "languagesTitle": "Langages de Programmation",
+    "frameworksTitle": "Frameworks & Librairies",
+    "databasesTitle": "Bases de Données",
+    "toolsTitle": "Outils & Technologies"
+  },
+  "projects": {
+    "title": "Projets réalisés"
+  },
+  "footer": {
+    "contactTitle": "Contact",
+    "connectTitle": "Connectons-nous",
+    "navigationTitle": "Navigation",
+    "navHome": "Accueil",
+    "navProjects": "Projets",
+    "navSkills": "Compétences",
+    "navAbout": "À propos",
+    "copyright": "Tous droits réservés.",
+    "availableMessage": "Actuellement disponible pour des opportunités professionnelles",
+    "backToTop": "↑ Retour en haut",
+    "lastUpdate": "Dernière mise à jour"
+  }
+}
