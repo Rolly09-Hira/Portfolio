@@ -1,13 +1,13 @@
 {
   "hero": {
     "greeting": "Bonjour, Je suis",
-    "name": "ANDRIAMAHERIMANANA",
-    "lastName": "Johnson Rolly",
+    "name": "ANDRIAMAHERY",
+    "lastName": "Rolly",
     "subtitle": "DEVELOPPEUR FULL-STACK & MOBILE",
     "skills": "Compétences en",
-    "description": "Développeur passionné créant des solutions innovantes avec une expertise en développement full-stack, mobile et une spécialisation en cours en Intelligence Artificielle. Toujours à la recherche de défis techniques et de performances optimales.",
-    "location": "Antananarivo, Madagascar",
-    "available": "Disponible pour opportunités"
+    "description": "Développeur passionné par la création de solutions innovantes, avec une expertise en développement et une spécialisation en cours en intelligence artificielle. Toujours prêt à relever des défis techniques pour des performances optimales.",
+    "location": "Antananarivo/Fianarantsoa, Madagascar",
+    "available": "Disponible pour des opportunités"
   },
   "navbar": {
     "about": "À propos",
@@ -20,7 +20,8 @@
     "contactTitle": "Contact",
     "diplomasTitle": "Diplômes",
     "languagesTitle": "Langues",
-    "experienceTitle": "Expériences & Formation",
+    "professionalExperienceTitle": "Expériences professionnelles",
+    "educationTitle": "Formations",
     "skillsTitle": "Aptitudes",
     "interestsTitle": "Centres d'intérêt"
   },
@@ -29,10 +30,12 @@
     "languagesTitle": "Langages de Programmation",
     "frameworksTitle": "Frameworks & Librairies",
     "databasesTitle": "Bases de Données",
-    "toolsTitle": "Outils & Technologies"
+    "toolsTitle": "Outils & Technologies",
+    "subtitle": "Les technologies que j'utilise pour créer des solutions innovantes"
   },
   "projects": {
-    "title": "Projets réalisés"
+    "title": "Projets réalisés",
+     "subtitle": "Découvrez mes réalisations professionnelles"
   },
   "footer": {
     "contactTitle": "Contact",
@@ -46,5 +49,18 @@
     "availableMessage": "Actuellement disponible pour des opportunités professionnelles",
     "backToTop": "↑ Retour en haut",
     "lastUpdate": "Dernière mise à jour"
+  },
+  "contact": {
+    "title": "Me Contacter",
+    "subtitle": "N'hésitez pas à me contacter pour toute opportunité ou collaboration"
+
+  },
+  "project": {
+    "title": "Projets"
+  },
+  "experience": {
+    "title": "Expériences Professionnelles",
+    "subtitle": "Mon parcours et mes réalisations",
+    "note": "3 expériences • Disponible pour de nouvelles opportunités"
   }
 }

@@ -1,13 +1,13 @@
 {
   "hero": {
     "greeting": "Hello! I'M",
-    "name": "ANDRIAMAHERIMANANA",
-    "lastName": "Johnson Rolly",
+    "name": "ANDRIAMAHERY",
+    "lastName": "Rolly",
     "title": "I'M A",
     "subtitle": "FULL-STACK & MOBILE DEVELOPER",
     "skills": "Skills in",
-    "description": "Passionate developer creating innovative solutions with expertise in full-stack, mobile development and ongoing specialization in Artificial Intelligence. Always seeking technical challenges and optimal performance.",
-    "location": "Antananarivo, Madagascar",
+    "description": "A passionate developer focused on creating innovative solutions, with expertise in development and a current specialization in Artificial Intelligence. Always ready to tackle technical challenges for optimal performance.",
+    "location": "Antananarivo/Fianarantsoa, Madagascar",
     "available": "Available for opportunities"
   },
   "navbar": {
@@ -22,7 +22,8 @@
     "contactTitle": "Contact",
     "diplomasTitle": "Diplomas",
     "languagesTitle": "Languages",
-    "experienceTitle": "Experience & Training",
+    "professionalExperienceTitle": "Professional Experience",
+    "educationTitle": "Education",
     "skillsTitle": "Skills",
     "interestsTitle": "Interests"
   },
@@ -31,11 +32,12 @@
     "languagesTitle": "Programming Languages",
     "frameworksTitle": "Frameworks & Libraries",
     "databasesTitle": "Databases",
-    "toolsTitle": "Tools & Technologies"
+    "toolsTitle": "Tools & Technologies",
+    "subtitle": "The technologies I use to create innovative solutions"
   },
     "projects": {
-    "title": "Projects"
-  },
+    "title": "Projects",
+    "subtitle": "Discover my professional achievements"},
    "footer": {
     "contactTitle": "Contact",
     "connectTitle": "Let's Connect",
@@ -48,6 +50,18 @@
     "availableMessage": "Currently available for professional opportunities",
     "backToTop": "↑ Back to top",
     "lastUpdate": "Last update"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "Feel free to contact me for any opportunity or collaboration"
+  },
+  "project": {
+    "title": "Projects"
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "subtitle": "My journey and achievements",
+    "note": "3 experiences • Available for new opportunities"
   }
 
 }

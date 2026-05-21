@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import en from '../locales/en.json';
 import fr from '../locales/fr.json';
@@ -5,7 +6,9 @@ import logo from '../assets/Logo.png';
 
 const Navbar = () => {
   const { language, toggleLanguage } = useLanguage();
+  const location = useLocation();
   const t = language === 'fr' ? fr.navbar : en.navbar;
+  const isHomePage = location.pathname === '/';
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -35,29 +38,32 @@ const Navbar = () => {
           
           {/* Menu + bouton langue */}
           <div className="flex items-center space-x-8">
-            <div className="hidden md:flex items-center space-x-8">
-              <button 
-                onClick={() => scrollToSection('about')} 
-                className="hover:text-blue-600 transition-colors"
-                style={{ color: '#E0E0E0' }}
-              >
-                {t.about}
-              </button>
-              <button 
-                onClick={() => scrollToSection('skills')} 
-                className="hover:text-blue-600 transition-colors"
-                style={{ color: '#E0E0E0' }}
-              >
-                {t.skills}
-              </button>
-              <button 
-                onClick={() => scrollToSection('projects')} 
-                className="hover:text-blue-600 transition-colors"
-                style={{ color: '#E0E0E0' }}
-              >
-                {t.projects}
-              </button>
-            </div>
+            {/* Afficher les boutons uniquement sur la page d'accueil */}
+            {isHomePage && (
+              <div className="hidden md:flex items-center space-x-8">
+                <button 
+                  onClick={() => scrollToSection('about')} 
+                  className="hover:text-blue-600 transition-colors"
+                  style={{ color: '#E0E0E0' }}
+                >
+                  {t.about}
+                </button>
+                <button 
+                  onClick={() => scrollToSection('skills')} 
+                  className="hover:text-blue-600 transition-colors"
+                  style={{ color: '#E0E0E0' }}
+                >
+                  {t.skills}
+                </button>
+                <button 
+                  onClick={() => scrollToSection('projects')} 
+                  className="hover:text-blue-600 transition-colors"
+                  style={{ color: '#E0E0E0' }}
+                >
+                  {t.projects}
+                </button>
+              </div>
+            )}
 
             {/* Bouton de langue */}
             <button
