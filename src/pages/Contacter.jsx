@@ -69,7 +69,7 @@ const Contact = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           onClick={() => navigate('/')}
-          className="flex items-center gap-2 mb-8 px-4 py-2 rounded-full transition-all duration-300 hover:scale-105"
+          className="flex items-center gap-2 mb-8 px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
           style={{
             backgroundColor: '#1A1B3A',
             color: '#00D4FF',
@@ -117,40 +117,75 @@ const Contact = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              className="rounded-2xl p-6 transition-all duration-300"
-              style={{
-                backgroundColor: 'rgba(26, 27, 58, 0.6)',
-                border: `1px solid ${contact.color}40`,
-                backdropFilter: 'blur(10px)'
-              }}
+              whileHover={{ scale: 1.03, y: -5 }}
             >
-              <div className="flex flex-col items-center text-center">
-                <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center mb-4 text-2xl"
+              {contact.link ? (
+                <a
+                  href={contact.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-2xl p-6 transition-all duration-300 cursor-pointer group"
                   style={{
-                    backgroundColor: `${contact.color}20`,
-                    color: contact.color
+                    backgroundColor: 'rgba(26, 27, 58, 0.6)',
+                    border: `1px solid ${contact.color}40`,
+                    backdropFilter: 'blur(10px)',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = `${contact.color}20`;
+                    e.currentTarget.style.borderColor = contact.color;
+                    e.currentTarget.style.transform = 'translateY(-5px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(26, 27, 58, 0.6)';
+                    e.currentTarget.style.borderColor = `${contact.color}40`;
+                    e.currentTarget.style.transform = 'translateY(0)';
                   }}
                 >
-                  {contact.icon}
+                  <div className="flex flex-col items-center text-center">
+                    <div
+                      className="w-14 h-14 rounded-full flex items-center justify-center mb-4 text-2xl transition-all duration-300 group-hover:scale-110"
+                      style={{
+                        backgroundColor: `${contact.color}20`,
+                        color: contact.color
+                      }}
+                    >
+                      {contact.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2 transition-all duration-300 group-hover:tracking-wider" style={{ color: contact.color }}>
+                      {contact.label}
+                    </h3>
+                    <p className="text-gray-300 text-sm break-all transition-all duration-300 group-hover:text-white">
+                      {contact.value}
+                    </p>
+                  </div>
+                </a>
+              ) : (
+                <div
+                  className="rounded-2xl p-6 transition-all duration-300"
+                  style={{
+                    backgroundColor: 'rgba(26, 27, 58, 0.6)',
+                    border: `1px solid ${contact.color}40`,
+                    backdropFilter: 'blur(10px)'
+                  }}
+                >
+                  <div className="flex flex-col items-center text-center">
+                    <div
+                      className="w-14 h-14 rounded-full flex items-center justify-center mb-4 text-2xl"
+                      style={{
+                        backgroundColor: `${contact.color}20`,
+                        color: contact.color
+                      }}
+                    >
+                      {contact.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2" style={{ color: contact.color }}>
+                      {contact.label}
+                    </h3>
+                    <p className="text-gray-300 text-sm">{contact.value}</p>
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold mb-2" style={{ color: contact.color }}>
-                  {contact.label}
-                </h3>
-                {contact.link ? (
-                  <a
-                    href={contact.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-white transition-colors text-sm break-all"
-                  >
-                    {contact.value}
-                  </a>
-                ) : (
-                  <p className="text-gray-300 text-sm">{contact.value}</p>
-                )}
-              </div>
+              )}
             </motion.div>
           ))}
         </motion.div>
@@ -162,7 +197,7 @@ const Contact = () => {
           transition={{ delay: 0.6 }}
           className="text-center mt-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full" style={{ backgroundColor: 'rgba(0, 212, 255, 0.1)', border: '1px solid rgba(0, 212, 255, 0.3)' }}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 hover:scale-105" style={{ backgroundColor: 'rgba(0, 212, 255, 0.1)', border: '1px solid rgba(0, 212, 255, 0.3)' }}>
             <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></div>
             <span className="text-sm text-gray-300">
               {language === 'fr' 

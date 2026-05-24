@@ -27,6 +27,10 @@
     "skillsTitle": "Skills",
     "interestsTitle": "Interests"
   },
+ "formation": {
+    "title": "Education",
+    "subtitle": "My academic journey"
+  },
   "skills": {
     "title": "Technical Skills",
     "languagesTitle": "Programming Languages",

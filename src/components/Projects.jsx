@@ -2,8 +2,8 @@ import { useLanguage } from '../contexts/LanguageContext';
 import en from '../locales/en.json';
 import fr from '../locales/fr.json';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { FaGithub, FaExternalLinkAlt, FaCalendarAlt, FaServer, FaLock, FaEye } from 'react-icons/fa';
+import { useRef, useState, useEffect } from 'react';
+import { FaGithub, FaExternalLinkAlt, FaCalendarAlt, FaServer, FaLock, FaTimes, FaPlay } from 'react-icons/fa';
 import vinaImage from '../assets/vina/vina.png';
 import appli1 from '../assets/appli/appli1.png';
 import appli2 from '../assets/appli/appli2.png';
@@ -11,6 +11,9 @@ import appli3 from '../assets/appli/appli3.png';
 import appli4 from '../assets/appli/appli4.png';
 import appli5 from '../assets/appli/appli5.png';
 import appli6 from '../assets/appli/appli6.png';
+import esp32Image from '../assets/Iot/esp32.png';
+import esp32Image2 from '../assets/Iot/esp32-1.png';
+import maisonVideo from '../assets/fichier/MaisonConnecté.mp4';
 
 const Projects = () => {
   const { language } = useLanguage();
@@ -18,8 +21,20 @@ const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [currentProject, setCurrentProject] = useState(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const videoRef = useRef(null);
+
+  // Bloquer le scroll du body quand la modale vidéo est ouverte
+  useEffect(() => {
+    if (showVideoModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showVideoModal]);
 
   const projects = [
     {
@@ -63,13 +78,45 @@ const Projects = () => {
         en: ["Secure authentication", "Attendance management", "Offline mode", "Data synchronization", "Report export", "Intuitive interface"]
       },
       type: "mobile"
+    },
+    {
+      id: 3,
+      title: "Maison Connectée - Système Domotique IoT",
+      period: "M1 - 2025",
+      role: { fr: "Développeur IoT Full-Stack", en: "IoT Full-Stack Developer" },
+      description: {
+        fr: "Développement d'une solution domotique complète simulant une maison intelligente connectée, intégrant capteurs environnementaux, actionneurs, interface utilisateur web et communication en temps réel via WebSocket.",
+        en: "Development of a complete home automation solution simulating a connected smart home, integrating environmental sensors, actuators, web user interface and real-time communication via WebSocket."
+      },
+      technologies: ["ESP32", "C++", "Node.js", "WebSocket", "React", "TypeScript", "Tailwind CSS", "Wokwi"],
+      images: [esp32Image, esp32Image2],
+      video: maisonVideo,
+      github: "https://github.com/Rolly09-Hira/Iot",
+      features: {
+        fr: [
+          "Sécurité : Clavier code PIN avec anti-intrusion",
+          "Éclairage automatique selon luminosité ambiante",
+          "Ventilation intelligente (auto/manual)",
+          "Détection de gaz/fumée avec seuil ajustable",
+          "Dashboard temps réel avec contrôles",
+          "Commandes à distance (porte, alarme, ventilation)"
+        ],
+        en: [
+          "Security: PIN keypad with anti-intrusion",
+          "Automatic lighting according to ambient light",
+          "Smart ventilation (auto/manual)",
+          "Gas/smoke detection with adjustable threshold",
+          "Real-time dashboard with controls",
+          "Remote controls (door, alarm, ventilation)"
+        ]
+      },
+      architecture: {
+        fr: "ESP32 (simulé sur Wokwi) ←→ Node.js Gateway (WebSocket) ←→ React Frontend",
+        en: "ESP32 (simulated on Wokwi) ←→ Node.js Gateway (WebSocket) ←→ React Frontend"
+      },
+      type: "iot"
     }
   ];
-
-  const openImageModal = (project, index) => {
-    setCurrentProject(project);
-    setCurrentImageIndex(index);
-  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -82,7 +129,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-12 md:py-20 relative overflow-hidden" style={{ backgroundColor: '#0A0B1F' }}>
+    <section id="projects" className="py-12 md:py-20 relative overflow-hidden scroll-mt-20" style={{ backgroundColor: '#0A0B1F' }}>
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-purple-900/5 to-transparent"></div>
       <div className="absolute top-20 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
@@ -137,13 +184,7 @@ const Projects = () => {
                   <div className="p-6">
                     <div className="flex justify-center gap-4 flex-wrap">
                       {project.images.map((img, idx) => (
-                        <motion.div
-                          key={idx}
-                          className="relative cursor-pointer group"
-                          whileHover={{ scale: 1.05, y: -5 }}
-                          transition={{ duration: 0.2 }}
-                          onClick={() => openImageModal(project, idx)}
-                        >
+                        <div key={idx} className="relative">
                           <div className="w-32 h-64 md:w-40 md:h-80 rounded-2xl overflow-hidden shadow-xl border-2 border-cyan-500/30">
                             <img
                               src={img}
@@ -151,11 +192,42 @@ const Projects = () => {
                               className="w-full h-full object-cover object-top"
                             />
                           </div>
-                          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl flex items-center justify-center">
-                            <FaEye className="text-white text-xl" />
-                          </div>
-                        </motion.div>
+                        </div>
                       ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Images pour projet IoT */}
+                {project.type === 'iot' && project.images && (
+                  <div className="p-6">
+                    <div className="flex justify-center gap-4 flex-wrap">
+                      {project.images.map((img, idx) => (
+                        <div key={idx} className="relative">
+                          <div className="w-64 h-48 md:w-80 md:h-56 rounded-xl overflow-hidden shadow-xl border-2 border-cyan-500/30">
+                            <img
+                              src={img}
+                              alt={`${project.title} screenshot ${idx + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                      {project.video && (
+                        <div
+                          className="relative cursor-pointer group"
+                          onClick={() => setShowVideoModal(true)}
+                        >
+                          <div className="w-64 h-48 md:w-80 md:h-56 rounded-xl overflow-hidden shadow-xl border-2 border-cyan-500/30 bg-black flex items-center justify-center">
+                            <div className="text-center">
+                              <div className="w-16 h-16 rounded-full bg-cyan-500/20 flex items-center justify-center mx-auto mb-3">
+                                <FaPlay className="text-cyan-400 text-2xl ml-1" />
+                              </div>
+                              <span className="text-white text-sm">Vidéo de démonstration</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
@@ -180,6 +252,15 @@ const Projects = () => {
                     <span>{project.period}</span>
                   </div>
 
+                  {/* Architecture pour IoT */}
+                  {project.architecture && (
+                    <div className="mb-4 p-3 rounded-lg" style={{ backgroundColor: '#00D4FF10', border: '1px solid #00D4FF30' }}>
+                      <p className="text-xs font-mono text-cyan-400">
+                        {project.architecture[language]}
+                      </p>
+                    </div>
+                  )}
+
                   {/* Titre */}
                   <h3 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: '#FFFFFF' }}>
                     {project.title}
@@ -200,7 +281,7 @@ const Projects = () => {
                     <h4 className="text-sm font-semibold mb-2" style={{ color: '#00D4FF' }}>
                       {language === 'fr' ? 'Fonctionnalités clés :' : 'Key features:'}
                     </h4>
-                    <ul className="grid grid-cols-2 gap-2">
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       {(language === 'fr' ? project.features.fr : project.features.en).map((feature, idx) => (
                         <li key={idx} className="flex items-center gap-2 text-sm text-gray-400">
                           <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
@@ -352,39 +433,43 @@ const Projects = () => {
           </div>
         )}
 
-        {/* Modal Images */}
-        {currentProject && currentProject.images && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative max-w-lg w-full"
-            >
-              <button
-                onClick={() => setCurrentProject(null)}
-                className="absolute -top-10 right-0 text-white text-2xl hover:text-cyan-400 transition-colors"
-              >
-                ✕
-              </button>
-              <img
-                src={currentProject.images[currentImageIndex]}
-                alt="Screenshot"
+        {/* Modal Vidéo - avec bouton de fermeture en bas à droite */}
+        {showVideoModal && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4" 
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.95)' }}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                setShowVideoModal(false);
+                if (videoRef.current) {
+                  videoRef.current.pause();
+                }
+              }
+            }}
+          >
+            <div className="relative max-w-4xl w-full">
+              <video
+                ref={videoRef}
+                src={maisonVideo}
+                controls
+                autoPlay
                 className="w-full rounded-2xl shadow-2xl"
+                controlsList="nodownload"
               />
-              <div className="flex justify-center gap-2 mt-4">
-                {currentProject.images.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentImageIndex(idx)}
-                    className="w-2 h-2 rounded-full transition-all"
-                    style={{
-                      backgroundColor: idx === currentImageIndex ? '#00D4FF' : '#1A1B3A',
-                      width: idx === currentImageIndex ? '16px' : '8px'
-                    }}
-                  />
-                ))}
-              </div>
-            </motion.div>
+              {/* Bouton de fermeture en bas à droite */}
+              <button
+                onClick={() => {
+                  setShowVideoModal(false);
+                  if (videoRef.current) {
+                    videoRef.current.pause();
+                  }
+                }}
+                className="absolute -bottom-12 left-0 text-white text-sm hover:text-cyan-400 transition-colors z-20 cursor-pointer bg-black/50 rounded-full px-4 py-2 flex items-center gap-2"
+              >
+                <FaTimes />
+                <span>Fermer</span>
+              </button>
+            </div>
           </div>
         )}
 
@@ -399,8 +484,8 @@ const Projects = () => {
             <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></div>
             <span className="text-sm text-gray-300">
               {language === 'fr' 
-                ? "📁 Plus de projets à venir..."
-                : "📁 More projects coming soon..."}
+                ? "Plus de projets à venir..."
+                : "More projects coming soon..."}
             </span>
           </div>
         </motion.div>
