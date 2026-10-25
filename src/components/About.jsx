@@ -112,7 +112,7 @@ const About = () => {
                 <div className="space-y-3 relative z-10">
                   <div className="flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors">
                     <FaPhone className="w-4 h-4 text-cyan-400" />
-                    <span>034 31 462 49 | 033 19 933 10</span>
+                    <span>038 28 088 01 | 033 19 933 10</span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-300">
                     <FaMapMarkerAlt className="w-4 h-4 text-cyan-400" />
