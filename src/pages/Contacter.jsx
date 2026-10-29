@@ -21,8 +21,8 @@ const Contact = () => {
     {
       icon: <FaPhone />,
       label: "Téléphone",
-      value: "+261 34 31 462 49 | +261 33 19 933 10",
-      link: "tel:+261343146249",
+      value: "+261 38 28 088 01 | +261 33 19 933 10",
+      link: "tel:+261382808801",
       color: "#10B981"
     },
     {
